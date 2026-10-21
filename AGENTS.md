@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Repo: TanStack Start (SSR) + React 19 + Vite + Nitro + Tailwind v4 + shadcn/ui.
+Repo: TanStack Start (SSR) + React 19 + Vite + Cloudflare Workers + Tailwind v4 + shadcn/ui.
 
 ## Commands
 
-- `pnpm install` / `pnpm dev` (port 3000) / `pnpm build` / `pnpm start`
+- `pnpm install` / `pnpm dev` (port 3000) / `pnpm build` / `pnpm preview` / `pnpm deploy`
 - `pnpm lint` / `pnpm lint:fix` (oxlint) / `pnpm format` / `pnpm format:check` (oxfmt)
 - `pnpm typecheck` (`tsc --noEmit`)
 - `pnpm test:e2e` / `pnpm test:e2e:ui` / `pnpm test:e2e:headed` / `pnpm test:e2e:report` (Playwright)
@@ -15,7 +15,7 @@ Repo: TanStack Start (SSR) + React 19 + Vite + Nitro + Tailwind v4 + shadcn/ui.
 - `src/routes/` — file-based routes (`__root.tsx` shell, `index.tsx` landing). Generated `src/routeTree.gen.ts` — never hand-edit.
 - `src/router.tsx` — `getRouter()` wires `QueryClient` + `setupRouterSsrQueryIntegration`.
 - `src/components/ui/` — shadcn primitives (base-nova style). `src/lib/utils.ts` — `cn()` helper. `src/hooks/` — client hooks.
-- `src/styles.css` — Tailwind v4 tokens/theme. `vite.config.ts` — nitro + tailwind + tanstackStart + react plugins.
+- `src/styles.css` — Tailwind v4 tokens/theme. `vite.config.ts` — cloudflare + tailwind + tanstackStart + react plugins.
 - `e2e/` — Playwright specs. `playwright.config.ts` — `baseURL http://localhost:3000`, auto-starts dev server (build+start on CI).
 
 ## Conventions

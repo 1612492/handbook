@@ -3,6 +3,7 @@ node_modules
 .cache
 .env
 .output
+dist
 .nitro
 .tanstack
 /test-results/

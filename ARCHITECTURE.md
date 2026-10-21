@@ -2,14 +2,14 @@
 
 ## Overview
 
-Handbook: an SSR React app of interactive frontend interview topic visualizers, built with TanStack Start + Nitro, Vite, TanStack Router, TanStack Query, Tailwind CSS v4 + shadcn/ui (base-nova).
+Handbook: an SSR React app of interactive frontend interview topic visualizers, built with TanStack Start, Vite, TanStack Router, TanStack Query, Tailwind CSS v4 + shadcn/ui (base-nova), deployed to Cloudflare Workers.
 
 ## Runtime layers
 
 | Layer     | Tool / file                                                                      | Role                                                                  |
 | --------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Dev/build | Vite (`vite.config.ts`) + Nitro plugin                                           | Dev server `:3000`; `vite build` emits to `.output/`                  |
-| Server    | Nitro 3 beta (`pnpm start` → `.output/server/index.mjs`)                         | SSR + static serving                                                  |
+| Dev/build | Vite (`vite.config.ts`) + Cloudflare Vite plugin                                 | Dev server `:3000`; `vite build` emits to `dist/`                     |
+| Server    | Cloudflare Workers (workerd) via `@cloudflare/vite-plugin`                       | SSR + static asset serving                                            |
 | App shell | `src/routes/__root.tsx`                                                          | `<html>` document, head links, `TooltipProvider`, `Toaster`, devtools |
 | Router    | TanStack Router file-based (`src/routes/`, `routeTree.gen.ts`, `src/router.tsx`) | Type-safe routes, preload `intent`, scroll restoration                |
 | Data      | TanStack Query + `setupRouterSsrQueryIntegration`                                | `QueryClient` in router context; SSR-dehydrated to client             |
@@ -20,7 +20,7 @@ Handbook: an SSR React app of interactive frontend interview topic visualizers, 
 
 ## Request lifecycle
 
-1. Nitro receives request → TanStack Start SSR renders matching route (`__root.tsx` → route component, e.g. `index.tsx`).
+1. Cloudflare Worker receives request → TanStack Start SSR renders matching route (`__root.tsx` → route component, e.g. `index.tsx`).
 2. Route `loader`s / query prefetches run server-side; Query cache dehydrates into HTML.
 3. Client hydrates via `getRouter()` (`src/router.tsx:6`); `setupRouterSsrQueryIntegration` reuses SSR cache, then Router takes over navigation with `intent` preloading.
 4. Static assets from `public/` (favicon) and bundled CSS served alongside.
