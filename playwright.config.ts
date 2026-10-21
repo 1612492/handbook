@@ -18,6 +18,11 @@ export default defineConfig({
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    {
+      name: "mobile-chromium",
+      use: { ...devices["Pixel 5"] },
+      testMatch: ["**/theme.spec.ts", "**/mobile-nav.spec.ts"],
+    },
   ],
   webServer: {
     command: process.env.CI ? "pnpm build && pnpm start" : "pnpm dev",

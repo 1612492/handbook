@@ -7,10 +7,14 @@ import { StageChips, StageShell } from "./parts";
 const LAYER_ORDER: ContainerId[] = ["margin", "border", "padding", "content"];
 
 const LAYER_STYLE: Record<ContainerId, string> = {
-  margin: "border-dashed border-amber-500/60 bg-amber-500/5",
-  border: "border-solid border-2 border-rose-500/60 bg-rose-500/5",
-  padding: "border-solid border-2 border-emerald-500/60 bg-emerald-500/5",
-  content: "border-solid border-2 border-blue-500/60 bg-blue-500/5",
+  margin:
+    "border-dashed border-amber-500/60 bg-amber-500/5 dark:bg-amber-500/5",
+  border:
+    "border-solid border-2 border-rose-500/60 bg-rose-500/5 dark:bg-rose-500/5",
+  padding:
+    "border-solid border-2 border-emerald-500/60 bg-emerald-500/5 dark:bg-emerald-500/5",
+  content:
+    "border-solid border-2 border-blue-500/60 bg-blue-500/5 dark:bg-blue-500/5",
 };
 
 const LAYER_LABEL: Record<ContainerId, string> = {

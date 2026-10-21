@@ -207,7 +207,7 @@ export function StepVisualizer<C extends string>({
         </header>
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-          <div className="flex flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             <CodeView
               code={example.code}
               activeLine={derived.step.activeLine}
@@ -242,7 +242,7 @@ export function StepVisualizer<C extends string>({
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             <Stage
               example={example}
               step={derived.step}

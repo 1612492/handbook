@@ -26,7 +26,7 @@ export function BfcStage({
           className={cn(
             "relative min-h-[9rem] rounded-lg border-2 p-3",
             contained
-              ? "border-emerald-500/60 bg-emerald-500/5"
+              ? "border-emerald-500/60 bg-emerald-500/5 dark:bg-emerald-500/5"
               : "border-dashed border-border/70 bg-muted/20",
           )}
         >
@@ -36,7 +36,7 @@ export function BfcStage({
           {floated ? (
             <motion.div
               layout={!reduced}
-              className="mt-2 float-left mr-2 h-12 w-20 rounded-lg border border-amber-500/60 bg-amber-500/15 text-xs"
+              className="mt-2 float-left mr-2 h-12 w-20 rounded-lg border border-amber-500/60 bg-amber-500/15 dark:bg-amber-500/15 text-xs"
             >
               <span className="p-1">float</span>
             </motion.div>
@@ -44,7 +44,7 @@ export function BfcStage({
           <motion.div
             layout={!reduced}
             className={cn(
-              "mt-2 h-16 rounded-lg border border-blue-500/50 bg-blue-500/10 text-xs",
+              "mt-2 h-16 rounded-lg border border-blue-500/50 bg-blue-500/10 dark:bg-blue-500/10 text-xs",
               contained ? "ml-24" : "ml-0",
             )}
           >
