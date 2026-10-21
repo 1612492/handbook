@@ -13,8 +13,8 @@ function ThisBindingTopic() {
 export const thisBindingTopic = defineTopic({
   id: "this-binding",
   category: "javascript",
-  title: "How `this` Works",
+  title: 'How "this" Works',
   description:
-    "Step through the binding rules and see which target `this` resolves to for each call.",
+    'Step through the binding rules and see which target "this" resolves to for each call.',
   Component: ThisBindingTopic,
 });

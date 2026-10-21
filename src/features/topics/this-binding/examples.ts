@@ -40,7 +40,7 @@ const ex1Steps: Step[] = [
     id: "d-2",
     activeLine: 2,
     narration:
-      "Default binding: `this` is the global object in non-strict mode (and `undefined` in strict mode).",
+      'Default binding: "this" is the global object in non-strict mode (and `undefined` in strict mode).',
     containers: c([THIS]),
     outputAppend: "global",
     focus: "global",
@@ -69,7 +69,7 @@ const ex2Steps: Step[] = [
     id: "i-2",
     activeLine: 3,
     narration:
-      "Implicit binding: `this` is the object to the left of the dot (`obj`).",
+      'Implicit binding: "this" is the object to the left of the dot (`obj`).',
     containers: c([], [THIS]),
     outputAppend: "obj",
     focus: "implicit",
@@ -88,7 +88,7 @@ const ex3Steps: Step[] = [
     id: "e-1",
     activeLine: 3,
     narration:
-      "show.call(target) explicitly sets `this` to `target`, so explicit binding applies.",
+      'show.call(target) explicitly sets "this" to `target`, so explicit binding applies.',
     containers: c(),
     focus: "none",
   },
@@ -96,7 +96,7 @@ const ex3Steps: Step[] = [
     id: "e-2",
     activeLine: 1,
     narration:
-      "Explicit binding: `this` is the object passed to call/apply (or permanently bound via bind).",
+      'Explicit binding: "this" is the object passed to call/apply (or permanently bound via bind).',
     containers: c([], [], [THIS]),
     outputAppend: "bound",
     focus: "explicit",
@@ -116,7 +116,7 @@ const ex4Steps: Step[] = [
     id: "b-1",
     activeLine: 3,
     narration:
-      "show.bind(target) creates a new function with `this` permanently set to `target`.",
+      'show.bind(target) creates a new function with "this" permanently set to `target`.',
     containers: c(),
     focus: "none",
   },
@@ -145,7 +145,7 @@ const ex5Steps: Step[] = [
     id: "n-1",
     activeLine: 5,
     narration:
-      "`new Person(...)` creates a fresh object and calls Person with `this` bound to it.",
+      '`new Person(...)` creates a fresh object and calls Person with "this" bound to it.',
     containers: c(),
     focus: "none",
   },
@@ -153,14 +153,14 @@ const ex5Steps: Step[] = [
     id: "n-2",
     activeLine: 2,
     narration:
-      "Inside the constructor, `this` is the new instance, so `this.name = name` sets the instance property.",
+      'Inside the constructor, "this" is the new instance, so `this.name = name` sets the instance property.',
     containers: c([], [], [], [THIS]),
     focus: "newInstance",
   },
   {
     id: "n-3",
     activeLine: 3,
-    narration: "New binding: `this` is the newly created instance.",
+    narration: 'New binding: "this" is the newly created instance.',
     containers: c([], [], [], [THIS]),
     outputAppend: "Ada",
     focus: "newInstance",
@@ -180,7 +180,7 @@ const ex6Steps: Step[] = [
   {
     id: "a-1",
     activeLine: 5,
-    narration: "obj.show() calls an arrow function; arrows have no own `this`.",
+    narration: 'obj.show() calls an arrow function; arrows have no own "this".',
     containers: c(),
     focus: "none",
   },
@@ -188,7 +188,7 @@ const ex6Steps: Step[] = [
     id: "a-2",
     activeLine: 3,
     narration:
-      "Lexical binding: the arrow inherits `this` from its enclosing (lexical) scope, not from the call site, so `obj` is ignored.",
+      'Lexical binding: the arrow inherits "this" from its enclosing (lexical) scope, not from the call site, so `obj` is ignored.',
     containers: c([], [], [], [], [THIS]),
     outputAppend: "undefined",
     focus: "lexical",
@@ -219,7 +219,7 @@ const ex7Steps: Step[] = [
     id: "p-2",
     activeLine: 2,
     narration:
-      "New binding wins: `this` is the new instance, not the bound `o`.",
+      'New binding wins: "this" is the new instance, not the bound `o`.',
     containers: c([], [], [], [THIS]),
     focus: "newInstance",
   },

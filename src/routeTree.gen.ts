@@ -9,112 +9,91 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as TopicsRouteImport } from './routes/topics'
-import { Route as TopicsIndexRouteImport } from './routes/topics/index'
-import { Route as TopicsTopicIdRouteImport } from './routes/topics/$topicId'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppSlugRouteImport } from './routes/_app.$slug'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TopicsRoute = TopicsRouteImport.update({
-  id: '/topics',
-  path: '/topics',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TopicsIndexRoute = TopicsIndexRouteImport.update({
+const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => TopicsRoute,
+  getParentRoute: () => AppRoute,
 } as any)
-const TopicsTopicIdRoute = TopicsTopicIdRouteImport.update({
-  id: '/$topicId',
-  path: '/$topicId',
-  getParentRoute: () => TopicsRoute,
+const AppSlugRoute = AppSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AppRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/topics': typeof TopicsRouteWithChildren
-  '/topics/$topicId': typeof TopicsTopicIdRoute
-  '/topics/': typeof TopicsIndexRoute
+  '/': typeof AppIndexRoute
+  '/$slug': typeof AppSlugRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/topics/$topicId': typeof TopicsTopicIdRoute
-  '/topics': typeof TopicsIndexRoute
+  '/$slug': typeof AppSlugRoute
+  '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/topics': typeof TopicsRouteWithChildren
-  '/topics/$topicId': typeof TopicsTopicIdRoute
-  '/topics/': typeof TopicsIndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/$slug': typeof AppSlugRoute
+  '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/topics' | '/topics/$topicId' | '/topics/'
+  fullPaths: '/' | '/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/topics/$topicId' | '/topics'
-  id: '__root__' | '/' | '/topics' | '/topics/$topicId' | '/topics/'
+  to: '/$slug' | '/'
+  id: '__root__' | '/_app' | '/_app/$slug' | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  TopicsRoute: typeof TopicsRouteWithChildren
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/topics': {
-      id: '/topics'
-      path: '/topics'
-      fullPath: '/topics'
-      preLoaderRoute: typeof TopicsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/topics/': {
-      id: '/topics/'
-      path: '/'
-      fullPath: '/topics/'
-      preLoaderRoute: typeof TopicsIndexRouteImport
-      parentRoute: typeof TopicsRoute
-    }
-    '/topics/$topicId': {
-      id: '/topics/$topicId'
-      path: '/$topicId'
-      fullPath: '/topics/$topicId'
-      preLoaderRoute: typeof TopicsTopicIdRouteImport
-      parentRoute: typeof TopicsRoute
+    '/_app/$slug': {
+      id: '/_app/$slug'
+      path: '/$slug'
+      fullPath: '/$slug'
+      preLoaderRoute: typeof AppSlugRouteImport
+      parentRoute: typeof AppRoute
     }
   }
 }
 
-interface TopicsRouteChildren {
-  TopicsTopicIdRoute: typeof TopicsTopicIdRoute
-  TopicsIndexRoute: typeof TopicsIndexRoute
+interface AppRouteChildren {
+  AppSlugRoute: typeof AppSlugRoute
+  AppIndexRoute: typeof AppIndexRoute
 }
 
-const TopicsRouteChildren: TopicsRouteChildren = {
-  TopicsTopicIdRoute: TopicsTopicIdRoute,
-  TopicsIndexRoute: TopicsIndexRoute,
+const AppRouteChildren: AppRouteChildren = {
+  AppSlugRoute: AppSlugRoute,
+  AppIndexRoute: AppIndexRoute,
 }
 
-const TopicsRouteWithChildren =
-  TopicsRoute._addFileChildren(TopicsRouteChildren)
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  TopicsRoute: TopicsRouteWithChildren,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

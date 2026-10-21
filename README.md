@@ -1,6 +1,6 @@
-# Starter Template
+# Handbook
 
-A minimal starter template for building React apps with Vite, TanStack Router, TanStack Query, Tailwind CSS, and shadcn/ui.
+A handbook of interactive visualizations for frontend interview topics with Vite, TanStack Router, TanStack Query, Tailwind CSS, and shadcn/ui.
 
 ## Tech Stack
 

@@ -2,17 +2,17 @@
 
 ## Purpose
 
-Lets users discover and open the available interview-topic visualizers from a single index, so each topic is reachable by a stable route and new topics can be added without changing navigation.
+Lets users discover and open the available topic visualizers from a single index, so each topic is reachable by a stable route and new topics can be added without changing navigation.
 
 ## Requirements
 
 ### Requirement: Topic catalog lists available topics
 
-The system SHALL display a catalog of available interview topics, each showing at least its title and a short description.
+The system SHALL display a catalog of available topics (via the shared topic navigation), each showing at least its title and a short description.
 
 #### Scenario: Catalog renders topics
 
-- **WHEN** a user navigates to the topics index route
+- **WHEN** a user views the topic navigation
 - **THEN** the system displays every registered topic with its title and description
 
 #### Scenario: Empty catalog
@@ -22,7 +22,7 @@ The system SHALL display a catalog of available interview topics, each showing a
 
 ### Requirement: Topic catalog entries are navigable
 
-The system SHALL provide a navigation affordance for each catalog entry that routes to that topic's dedicated page.
+The system SHALL provide a navigation affordance for each catalog entry that routes to that topic's dedicated page at `/$slug`.
 
 #### Scenario: Open a topic
 
@@ -46,3 +46,12 @@ Each registered topic SHALL expose a unique identifier, a title, and a descripti
 
 - **WHEN** a topic is shown in the catalog and on its own page
 - **THEN** both surfaces display the same title and description for that topic identifier
+
+### Requirement: Intro page displays welcome content
+
+The system SHALL display an intro page at `/` with a welcome heading and short description, without requiring a topic selection.
+
+#### Scenario: Intro renders
+
+- **WHEN** a user navigates to `/`
+- **THEN** the system displays the intro heading and description

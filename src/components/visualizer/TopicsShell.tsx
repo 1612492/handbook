@@ -1,11 +1,8 @@
-import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { groupTopicsByCategory, listTopics } from "@/features/topics";
 
-export const Route = createFileRoute("/topics")({
-  component: TopicsLayoutComponent,
-});
-
-function TopicsLayoutComponent() {
+export function TopicsShell({ children }: { children: ReactNode }) {
   const topics = listTopics();
   const groups = groupTopicsByCategory(topics);
 
@@ -17,7 +14,7 @@ function TopicsLayoutComponent() {
             Topics
           </p>
           <nav
-            aria-label="Interview topics"
+            aria-label="Topics"
             className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pr-1"
           >
             {groups.length === 0 ? (
@@ -33,8 +30,8 @@ function TopicsLayoutComponent() {
                   {group.topics.map((topic) => (
                     <Link
                       key={topic.id}
-                      to="/topics/$topicId"
-                      params={{ topicId: topic.id }}
+                      to="/$slug"
+                      params={{ slug: topic.id }}
                       activeProps={{
                         className: "bg-muted text-foreground font-medium",
                       }}
@@ -53,9 +50,7 @@ function TopicsLayoutComponent() {
           </nav>
         </div>
       </aside>
-      <main className="min-w-0 flex-1">
-        <Outlet />
-      </main>
+      <main className="min-w-0 flex-1">{children}</main>
     </div>
   );
 }

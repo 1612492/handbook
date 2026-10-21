@@ -38,12 +38,16 @@ export function NarrationText({
     if (idx > lastIndex) parts.push(text.slice(lastIndex, idx));
     const full = match[0];
     if (match[1]) {
+      const display =
+        full.startsWith("`") && full.endsWith("`")
+          ? `"${full.slice(1, -1)}"`
+          : full;
       parts.push(
         <span
           key={key++}
           className="rounded bg-orange-200/70 px-0.5 text-orange-900 dark:bg-orange-500/25 dark:text-orange-200"
         >
-          {full}
+          {display}
         </span>,
       );
     } else if (match[2]) {
@@ -73,5 +77,5 @@ export function NarrationText({
 }
 
 function PlainNarration({ text }: { text: string }) {
-  return <>{text}</>;
+  return <>{text.replace(/`([^`]*)`/g, '"$1"')}</>;
 }

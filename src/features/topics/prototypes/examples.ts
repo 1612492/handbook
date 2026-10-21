@@ -47,7 +47,7 @@ const lookupSteps: Step[] = [
     id: "p1-3",
     activeLine: 9,
     narration:
-      "The method is found on the prototype, but it still runs with `this` bound to the instance.",
+      'The method is found on the prototype, but it still runs with "this" bound to the instance.',
     containers: c({
       instance: ["dog.name = 'Rex'", "this = dog"],
       prototype: ["Animal.prototype.speak"],

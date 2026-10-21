@@ -2,7 +2,7 @@
 
 ## Overview
 
-Minimal SSR React starter: TanStack Start app served by Nitro, built with Vite, routed with TanStack Router, fetching with TanStack Query, styled with Tailwind CSS v4 + shadcn/ui (base-nova).
+Handbook: an SSR React app of interactive frontend interview topic visualizers, built with TanStack Start + Nitro, Vite, TanStack Router, TanStack Query, Tailwind CSS v4 + shadcn/ui (base-nova).
 
 ## Runtime layers
 

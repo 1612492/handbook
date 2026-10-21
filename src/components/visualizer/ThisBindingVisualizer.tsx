@@ -45,42 +45,42 @@ const config: StepVisualizerConfig<ContainerId> = {
   examples,
   getExample,
   getNextDestination,
-  heading: "How `this` Works Visualizer",
+  heading: 'How "this" Works Visualizer',
   subtitle:
-    "Step through curated examples and see which binding rule resolves `this`.",
-  outputLabel: "Resolved `this`",
-  quizPrompt: "Predict: which binding target resolves the next `this`?",
+    'Step through curated examples and see which binding rule resolves "this".',
+  outputLabel: 'Resolved "this"',
+  quizPrompt: 'Predict: which binding target resolves the next "this"?',
   footer: {
-    title: "Explain how `this` works in JavaScript",
+    title: 'Explain how "this" works in JavaScript',
     body: (
       <>
         <p>
-          There is no simple explanation for `this`; it is one of the most
+          There is no simple explanation for "this"; it is one of the most
           confusing concepts in JavaScript. A hand-wavey explanation is that the
-          value of `this` depends on how the function is called. The following
+          value of "this" depends on how the function is called. The following
           rules are applied (higher rules win):
         </p>
         <ol className="list-decimal space-y-1 pl-5">
           <li>
-            If the `new` keyword is used when calling the function, `this`
+            If the `new` keyword is used when calling the function, "this"
             inside the function is a brand new object.
           </li>
           <li>
             If `apply`, `call`, or `bind` are used to call/create a function,
-            `this` inside the function is the object passed in as the argument.
+            "this" inside the function is the object passed in as the argument.
           </li>
           <li>
-            If a function is called as a method, such as `obj.method()`, `this`
+            If a function is called as a method, such as `obj.method()`, "this"
             is the object that the function is a property of.
           </li>
           <li>
-            If a function is invoked as a free function, `this` is the global
+            If a function is invoked as a free function, "this" is the global
             object (or `undefined` in strict mode).
           </li>
           <li>If multiple of the above rules apply, the higher rule wins.</li>
           <li>
             If the function is an arrow function, it ignores all the rules above
-            and receives the `this` value of its surrounding scope at the time
+            and receives the "this" value of its surrounding scope at the time
             it is created.
           </li>
         </ol>

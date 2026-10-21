@@ -1,8 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Playwright config for the TanStack Start starter.
- * @see https://playwright.dev/docs/intro
+ * Playwright config for the Handbook app. * @see https://playwright.dev/docs/intro
  */
 export default defineConfig({
   testDir: "./e2e",

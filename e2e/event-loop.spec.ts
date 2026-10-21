@@ -1,27 +1,22 @@
 import { expect, test } from "@playwright/test";
 
-test("topics catalog lists event loop and navigates", async ({ page }) => {
-  await page.goto("/topics");
+test("sidebar lists event loop and navigates", async ({ page }) => {
+  await page.goto("/");
   await page.waitForLoadState("networkidle");
-  await expect(
-    page.getByRole("heading", { name: "Interview Topics" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "Event Loop", exact: true }),
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Handbook" })).toBeVisible();
 
   await page
-    .locator("main")
+    .locator("aside")
     .getByRole("link", { name: /event loop/i })
     .click();
-  await expect(page).toHaveURL(/\/topics\/event-loop$/);
+  await expect(page).toHaveURL(/\/event-loop$/);
   await expect(
     page.getByRole("heading", { name: "Event Loop Visualizer" }),
   ).toBeVisible();
 });
 
 test("event loop playback advances and scrubs", async ({ page }) => {
-  await page.goto("/topics/event-loop");
+  await page.goto("/event-loop");
   await expect(
     page.getByRole("heading", { name: "Event Loop Visualizer" }),
   ).toBeVisible();
@@ -52,7 +47,7 @@ test("event loop playback advances and scrubs", async ({ page }) => {
 });
 
 test("quiz mode prompts for a prediction", async ({ page }) => {
-  await page.goto("/topics/event-loop");
+  await page.goto("/event-loop");
   await page.getByRole("button", { name: "Quiz mode" }).click();
   await expect(
     page.getByText("Predict: where does the next item go?"),

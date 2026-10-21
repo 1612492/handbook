@@ -215,17 +215,17 @@ export function StepVisualizer<C extends string>({
             />
             <div className="shrink-0 rounded-2xl border border-border/70 bg-card/80 p-4">
               <div className="flex items-center gap-2">
-                <span className="flex size-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                <span className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                   {derived.stepIndex + 1}
                 </span>
                 <p
-                  className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground"
                   data-testid="step-counter"
                 >
                   Step {derived.stepIndex + 1} of {derived.totalSteps}
                 </p>
               </div>
-              <p className="mt-3 text-lg leading-8">
+              <p className="mt-3 text-base leading-7">
                 <NarrationText
                   text={derived.step.narration}
                   terms={highlightTerms}

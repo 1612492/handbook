@@ -28,7 +28,7 @@ export const TOPIC_MANIFEST: TopicManifestEntry[] = [
     category: "javascript",
   },
   { id: "scoping", title: "Scoping", category: "javascript" },
-  { id: "this-binding", title: "How `this` Works", category: "javascript" },
+  { id: "this-binding", title: 'How "this" Works', category: "javascript" },
   {
     id: "dom-attr-vs-prop",
     title: "Attributes vs Properties",

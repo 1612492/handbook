@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getTopic } from "@/features/topics";
 
-export const Route = createFileRoute("/topics/$topicId")({
+export const Route = createFileRoute("/_app/$slug")({
   component: TopicRouteComponent,
 });
 
 function TopicRouteComponent() {
-  const { topicId } = Route.useParams();
-  const topic = getTopic(topicId);
+  const { slug } = Route.useParams();
+  const topic = getTopic(slug);
 
   if (!topic) {
     return (
@@ -16,7 +16,7 @@ function TopicRouteComponent() {
           Topic not found
         </h1>
         <p className="text-muted-foreground">
-          No topic exists for &quot;{topicId}&quot;.
+          No topic exists for &quot;{slug}&quot;.
         </p>
       </main>
     );
